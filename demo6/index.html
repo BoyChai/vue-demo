@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VUE生命周期</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+<div id="hello-vue">
+    <h1>生命周期</h1>
+</div>
+<script>
+    const HelloVueApp = {
+        beforeCreate(){
+            console.log("beforeCreate-在vue实例生产前，初始化后会自动执行的函数(此时vue实例并未完全创建出来)")
+        },
+        created(){
+            console.log("created-在vue实例创建完成之后会自动执行的函数(vue实例创建完成)")
+        },
+        beforeMount() {
+            console.log("beforeMount-把组件内容渲染到页之前自动执行的函数(相关的render函数首次被调用)")
+        },
+    }
+    Vue.createApp(HelloVueApp).mount('#hello-vue');
+</script>
+</body>
+</html>
