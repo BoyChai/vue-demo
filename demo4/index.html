@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>测试VUE</title>
+  <!--    引入vue的cdn-->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+<div id="hello-vue">
+  <p v-show="seen">{{message1}}</p>
+  <p v-show="!seen">{{message2}}</p>
+  <button @click="btn()">修改状态</button>
+  <p v-if="seen==true">当前状态true</p>
+  <p v-if="seen==false">当前状态false</p>
+  <p v-for="(item,index) in array" :key="index">
+    {{index}}---{{item}}
+  </p>
+</div>
+<script>
+  const HelloVueApp = {
+    data() {         // 定义数据的地方
+      return {
+        message1: "Hello Vue!",
+        message2: "你好 Vue!",
+        seen: true,
+        array: [
+          "你好",
+          "hello",
+          "hi",
+        ],
+      }
+    },
+    methods: {        // 定义方法的地方
+      btn() {
+        this.seen = !this.seen
+      }
+    },
+    computed:{      // 定义计算属性的地方
+    },
+    watch: {
+    }
+
+  }
+  var v = Vue.createApp(HelloVueApp).mount('#hello-vue');
+  console.log(v.$data.message)
+</script>
+</body>
+</html>
