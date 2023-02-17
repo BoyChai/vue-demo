@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试VUE</title>
+    <!--    引入vue的cdn-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+<div id="hello-vue">
+    <p>{{ sum }}</p>
+    <button @click="btn()">打印</button>
+    <p>{{message}}</p>
+    <button @click="setMsg()">修改Msg</button>
+</div>
+<script>
+    const HelloVueApp = {
+        data() {         // 定义数据的地方
+            return {
+                message: "Hello Vue!",
+                newValue: "",
+                oldValue: "",
+                num1: 1,
+                num2: 2,
+                num3: 3,
+            }
+        },
+        methods: {        // 定义方法的地方
+            btn() {
+                console.log(this.message)
+            },
+            setMsg() {
+                this.message = "你好 Vue!"
+            }
+        },
+        computed:{      // 定义计算属性的地方
+            sum() {
+                return this.num1+this.num2+this.num3
+            }
+        },
+        watch: {
+            // message发生变化执行该函数
+            message(newValue,oldValue) {
+                this.newValue = newValue
+                this.oldValue = oldValue
+                console.log(this.newValue)
+                console.log(this.oldValue)
+            }
+        }
+
+    }
+    var v = Vue.createApp(HelloVueApp).mount('#hello-vue');
+    console.log(v.$data.message)
+</script>
+</body>
+</html>
