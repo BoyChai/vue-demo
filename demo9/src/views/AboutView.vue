@@ -20,8 +20,12 @@ export default {
   methods: {
     getData() {
       // this.$axios.get('http://api.boychai.xyz/test/v1/user').then( (resp)=> {
-      this.$axios.get('/test/v1/user').then( resp=> {
+      // this.$axios.get('/test/v1/user').then( resp=> {
+      this.$api.get('v1/user').then( (resp)=> {
         this.user = resp.data
+      }).catch(err => {
+        // 使用catch捕捉异常
+        console.log(err)
       })
       console.log(this.user)
     }
